@@ -8,8 +8,14 @@ class UsersController extends AppController
 {
   public function index()
   {
-    $usuarios = $this->Users->find()->all();
-    // $this->set(['usuarios' => $usuarios]);
+    $this->paginate = [
+      "limit" => 1,
+      "order" => [
+        "Users.id" => "asc"
+      ]
+    ];
+
+    $usuarios = $this->paginate($this->Users);
     $this->set( compact('usuarios') );
   }
 }
