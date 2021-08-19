@@ -1,5 +1,8 @@
 <div class="users index large-12 medium-12 columns content">
   <h3> <?php echo 'Lista de usuários'; ?> </h3>
+  
+  <?= $this->Html->link(__('Novo usuário'), ['action'=>'add']) ?>
+
   <table>
     <thead>
       <tr>
@@ -26,6 +29,7 @@
       <?php endforeach; ?>
     </tbody>
   </table>
+
   <div class="paginator">
     <ul class="pagination">
       <?php echo $this->Paginator->first('<< '. __('Primeira página')); ?>
