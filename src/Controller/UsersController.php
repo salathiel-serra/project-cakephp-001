@@ -9,7 +9,7 @@ class UsersController extends AppController
   public function index()
   {
     $this->paginate = [
-      "limit" => 1,
+      "limit" => 20,
       "order" => [
         "Users.id" => "asc"
       ]
@@ -17,5 +17,11 @@ class UsersController extends AppController
 
     $usuarios = $this->paginate($this->Users);
     $this->set( compact('usuarios') );
+  }
+
+  public function view($id = NULL)
+  {
+    $usuario = $this->Users->get($id);
+    $this->set(['usuario'=>$usuario]);
   }
 }

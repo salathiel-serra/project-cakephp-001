@@ -1,5 +1,5 @@
 <div class="users index large-12 medium-12 columns content">
-  <h3> <?php echo 'Usuários'; ?> </h3>
+  <h3> <?php echo 'Lista de usuários'; ?> </h3>
   <table>
     <thead>
       <tr>
@@ -15,7 +15,13 @@
         <td> <?php echo $usuario->id ?> </td>
         <td> <?php echo $usuario->name ?> </td>
         <td> <?php echo $usuario->email ?> </td>
-        <td> Ver |  Editar | Excluir </td>
+        <td> 
+          <?php
+            echo $this->Html->link(('Ver'), ['action'=>'view', $usuario->id]);
+          ?>
+          | Editar 
+          | Excluir 
+        </td>
       </tr>
       <?php endforeach; ?>
     </tbody>
