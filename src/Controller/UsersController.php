@@ -47,4 +47,23 @@ class UsersController extends AppController
 
     $this->set( compact('user') );
   }
+
+  public function edit($id = NULL)
+  {
+    $user = $this->Users->get($id);
+
+    if ($this->request->is(['post', 'put'])) {
+      $user = $this->Users->patchEntity($user, $this->request->getData());
+
+      if ($this->Users->save($user)) {
+        
+        $this->Flash->success(__('Usuário atualizado com sucesso!'));
+        return $this->redirect(['action'=>'index']);
+
+      } else {
+        $this->Flash->error(__('Erro: Não foi possível atualizar usuário!'));
+      }
+    }
+    $this->set( compact('user') );
+  }
 }

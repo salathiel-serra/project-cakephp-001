@@ -22,7 +22,9 @@
           <?php
             echo $this->Html->link(('Ver'), ['action'=>'view', $usuario->id]);
           ?>
-          | Editar 
+          <?php
+            echo $this->Html->link(('Editar'), ['action'=>'edit', $usuario->id]);
+          ?>
           | Excluir 
         </td>
       </tr>
