@@ -20,12 +20,15 @@
         <td> <?php echo $usuario->email ?> </td>
         <td> 
           <?php
-            echo $this->Html->link(('Ver'), ['action'=>'view', $usuario->id]);
+            echo $this->Html->link((' Ver '), ['action'=>'view', $usuario->id]);
+
+            echo $this->Html->link((' Editar '), ['action'=>'edit', $usuario->id]);
+
+            echo $this->Form->postLink((' Excluir '), 
+              ['action'=>'delete', $usuario->id], 
+              ['confirm'=>'Deseja realmente excluir este usuário ?', $usuario->id]
+            );
           ?>
-          <?php
-            echo $this->Html->link(('Editar'), ['action'=>'edit', $usuario->id]);
-          ?>
-          | Excluir 
         </td>
       </tr>
       <?php endforeach; ?>

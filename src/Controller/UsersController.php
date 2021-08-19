@@ -66,4 +66,20 @@ class UsersController extends AppController
     }
     $this->set( compact('user') );
   }
+
+  public function delete($id = NULL)
+  {
+    $this->request->allowMethod(['post', 'delete']);
+    $user = $this->Users->get($id);
+
+    if ($this->Users->delete($user)) {
+      
+      $this->Flash->success(__('Usuário removido com sucesso!'));
+    } else {
+
+      $this->Flash->error(__('Erro: Não foi possível remover usuário!'));
+    }
+
+    return $this->redirect(['action'=>'index']);
+  }
 }
